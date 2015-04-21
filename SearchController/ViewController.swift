@@ -37,6 +37,8 @@ class ViewController: UIViewController , UISearchBarDelegate{
         // WARNING: do NOT call showsScopeBar! it messes things up!
         // (buttons will show during search if there are titles)self.searcher.searchBar.frame.size.width
        //b.frame = CGRectMake(0, 0, 400, 40);
+        
+        
         searcher.searchBar.autocapitalizationType = .None
         searchBarView.addSubview(searcher.searchBar)
         searcher.searchBar.sizeToFit() // crucial, trust me on this one
