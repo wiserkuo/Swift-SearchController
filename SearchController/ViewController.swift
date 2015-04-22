@@ -85,37 +85,19 @@ class ViewController: UIViewController , UISearchBarDelegate{
     func searchBarSearchButtonClicked(searchBar: UISearchBar){
         println("searchBarSearchButtonClicked")
         println("typed:\(searcher.searchBar.text)")
-        
         searcher.active = false
         
     }
     func searchBarTextDidEndEditing(searchBar: UISearchBar){ // wiser:connected the action didSelectRowAtIndexPath in AutoCompleteController , set searcher.active=false as well
         println("searchBarTextDidEndEditing")
-        println("autocomplete:\(src.originalData[src.selectedIndex.row]) , \(src.place_ids[src.selectedIndex.row])")
-        descriptionLabel.text="description:"+src.originalData[src.selectedIndex.row]
-        placeidLabel.text="place id:"+src.place_ids[src.selectedIndex.row]
-        
-        googlePlaceAPI.fetchPlacesDetail(src.place_ids[src.selectedIndex.row]){ place in
-           
-            self.coordinateLabel.text="coordinate: \(place!.coordinate.longitude), \(place!.coordinate.latitude)"
-            self.addressLabel.text="address:\(place!.address)"
-           // searcher.searchBar.placeholder="\(self.src.originalData[self.src.selectedIndex.row])"
-            //let prediction: Prediction in predictions {
-                //println("\(prediction.description)")
-                //      self.sectionData.append(prediction.description)
-              //  self.originalData.append(prediction.description)
-              //  self.place_ids.append(prediction.place_id)
-            //}
-            //src.reloadOriginalData(self.sectionData)
-            //src.tableView.reloadData()
-            //self.filteredData = self.originalData
-            /*self.filteredData = self.originalData.filter {
-            s in
-            let options = NSStringCompareOptions.CaseInsensitiveSearch
-            let found = s.rangeOfString(searchController.searchBar.text, options: options)
-            return (found != nil)
-            }*/
-            //self.tableView.reloadData()
+        if src.selected! {
+            println("autocomplete:\(src.originalData[src.selectedIndex.row]) , \(src.place_ids[src.selectedIndex.row])")
+            descriptionLabel.text="description:"+src.originalData[src.selectedIndex.row]
+            placeidLabel.text="place id:"+src.place_ids[src.selectedIndex.row]
+            googlePlaceAPI.fetchPlacesDetail(src.place_ids[src.selectedIndex.row]){ place in
+                self.coordinateLabel.text="coordinate: \(place!.coordinate.longitude), \(place!.coordinate.latitude)"
+                self.addressLabel.text="address:\(place!.address)"
+            }
         }
     }
     

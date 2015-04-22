@@ -14,6 +14,7 @@ class AutoCompleteController: UITableViewController {
     var filteredData : [String] = []
     var googlePlaceAPI = GooglePlaceAPI()
     var selectedIndex = NSIndexPath()
+    var selected : Bool!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Uncomment the following line to preserve selection between presentations
@@ -55,6 +56,7 @@ class AutoCompleteController: UITableViewController {
     }
     override func tableView(tableView: UITableView,didSelectRowAtIndexPath indexPath: NSIndexPath) {
         selectedIndex=indexPath
+        selected = true
         searcher.active=false
         
     }
@@ -117,7 +119,8 @@ and reload the table.
 
 extension AutoCompleteController : UISearchResultsUpdating {
     func updateSearchResultsForSearchController(searchController: UISearchController) {
-        println("here")
+        println("updateSearchResultsForSearchController")
+        selected = false
         self.originalData.removeAll()
         self.place_ids.removeAll()
         googlePlaceAPI.fetchPlacesAutoComplete(searchController.searchBar.text){ predictions in
