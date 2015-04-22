@@ -24,10 +24,6 @@
                                     <constraint firstAttribute="height" constant="40" id="y2O-zo-zPl"/>
                                 </constraints>
                             </view>
-                            <searchBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZQC-Kh-M10">
-                                <rect key="frame" x="0.0" y="492" width="600" height="44"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>

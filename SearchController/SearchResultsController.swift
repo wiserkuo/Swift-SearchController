@@ -13,9 +13,10 @@ class SearchResultsController : UITableViewController {
     var originalData : [String]
     var filteredData = [String]()
     
-    init(data:[[String]]) {
+    init(data:[String]) {
         // we don't use sections, so flatten the data into a single array of strings
-        self.originalData = data.reduce([String](), combine:+)
+        //self.originalData = data.reduce([String](), combine:+)
+        self.originalData = data
         // new in Swift 1.2, could instead say data.flatMap {$0}
         super.init(nibName: nil, bundle: nil)
     }
@@ -43,6 +44,9 @@ class SearchResultsController : UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
         cell.textLabel!.text = self.filteredData[indexPath.row]
         return cell
+    }
+    func reloadOriginalData(data:[String]){
+       self.originalData=data
     }
 }
 

@@ -10,15 +10,18 @@ import UIKit
 
 class ViewController: UIViewController , UISearchBarDelegate{
     
-    @IBOutlet weak var bar: UISearchBar!
-    
+    let googlePlaceAPI = GooglePlaceAPI()
     @IBOutlet weak var searchBarView: UIView!
     
-    var sectionData = [[String]]()
+    var sectionData = [String]()
     var searcher = UISearchController()
     override func viewDidLoad() {
         super.viewDidLoad()
-        sectionData = [["aaa"]]
+        sectionData = ["aaa"]
+
+
+        //for
+        
         // Do any additional setup after loading the view, typically from a nib.
         // most rudimentary possible search interface
         // instantiate a view controller that will present the search results
@@ -46,6 +49,25 @@ class ViewController: UIViewController , UISearchBarDelegate{
         //b.size
         //self.bar=b
         //bar=b
+       // GooglePlaceAPI.fetchPlacesAutoComplete(
+        /* dataProvider.fetchPlacesNearCoordinate(coordinate, radius:mapRadius, types: searchedTypes) { places in
+        for place: GooglePlace in places {
+        // 3
+        let marker = PlaceMarker(place: place)
+        // 4
+        marker.map = self.mapView
+        }
+        }
+*/
+        googlePlaceAPI.fetchPlacesAutoComplete("new york"){ predictions in
+            for prediction: Prediction in predictions {
+                //println("\(prediction.description)")
+                self.sectionData.append(prediction.description)
+            }
+            src.reloadOriginalData(self.sectionData)
+            src.tableView.reloadData()
+        }
+    
         
     }
 

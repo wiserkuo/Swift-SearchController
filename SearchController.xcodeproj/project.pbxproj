@@ -14,6 +14,8 @@
 		2DBAEA5D1AE690B200372075 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DBAEA5B1AE690B200372075 /* LaunchScreen.xib */; };
 		2DBAEA691AE690B200372075 /* SearchControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBAEA681AE690B200372075 /* SearchControllerTests.swift */; };
 		2DBAEA731AE6939700372075 /* SearchResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBAEA721AE6939700372075 /* SearchResultsController.swift */; };
+		2DBAEA751AE73A2C00372075 /* GooglePlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBAEA741AE73A2C00372075 /* GooglePlace.swift */; };
+		2DBAEA771AE74C2C00372075 /* GooglePlaceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBAEA761AE74C2C00372075 /* GooglePlaceAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +40,8 @@
 		2DBAEA671AE690B200372075 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2DBAEA681AE690B200372075 /* SearchControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchControllerTests.swift; sourceTree = "<group>"; };
 		2DBAEA721AE6939700372075 /* SearchResultsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsController.swift; sourceTree = "<group>"; };
+		2DBAEA741AE73A2C00372075 /* GooglePlace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlace.swift; sourceTree = "<group>"; };
+		2DBAEA761AE74C2C00372075 /* GooglePlaceAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GooglePlaceAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +85,8 @@
 			children = (
 				2DBAEA521AE690B200372075 /* AppDelegate.swift */,
 				2DBAEA541AE690B200372075 /* ViewController.swift */,
+				2DBAEA741AE73A2C00372075 /* GooglePlace.swift */,
+				2DBAEA761AE74C2C00372075 /* GooglePlaceAPI.swift */,
 				2DBAEA561AE690B200372075 /* Main.storyboard */,
 				2DBAEA591AE690B200372075 /* Images.xcassets */,
 				2DBAEA5B1AE690B200372075 /* LaunchScreen.xib */,
@@ -217,6 +223,8 @@
 			files = (
 				2DBAEA551AE690B200372075 /* ViewController.swift in Sources */,
 				2DBAEA731AE6939700372075 /* SearchResultsController.swift in Sources */,
+				2DBAEA751AE73A2C00372075 /* GooglePlace.swift in Sources */,
+				2DBAEA771AE74C2C00372075 /* GooglePlaceAPI.swift in Sources */,
 				2DBAEA531AE690B200372075 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
