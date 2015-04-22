@@ -17,9 +17,11 @@ class GooglePlaceAPI {
     var session: NSURLSession {
         return NSURLSession.sharedSession()
     }
-//https://maps.googleapis.com/maps/api/place/autocomplete/json?input=自由女神&key=AIzaSyA0LhU68y48rb04f4kfvMH8xOsyCr7xz24
+    var predictions = [Prediction]()
+//https://maps.googleapis.com/maps/api/place/autocomplete/json?key=AIzaSyA0LhU68y48rb04f4kfvMH8xOsyCr7xz24&input=new%20york
     func fetchPlacesAutoComplete(input:String, completion: (([Prediction]) -> Void)) -> ()
     {
+    predictions.removeAll()
        //input = "new york"
         //let a = "new york"
        var urlString = "https://maps.googleapis.com/maps/api/place/autocomplete/json?key=\(apiKey)&input=\(input)"
@@ -34,18 +36,18 @@ class GooglePlaceAPI {
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         placesTask = session.dataTaskWithURL(NSURL(string: urlString)!) {data, response, error in
             UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-            var placesArray = [Prediction]()
+            self.predictions = [Prediction]()
             if let json = NSJSONSerialization.JSONObjectWithData(data, options:nil, error:nil) as? NSDictionary {
                 if let results = json["predictions"] as? NSArray {
                     for rawPlace:AnyObject in results {
                         let place = Prediction(dictionary: rawPlace as! NSDictionary)
-                        placesArray.append(place)
+                        self.predictions.append(place)
                         println("\(place.description) , \(place.place_id)")
                     }
                 }
             }
             dispatch_async(dispatch_get_main_queue()) {
-                completion(placesArray)
+                completion(self.predictions)
             }
         }
         placesTask.resume()

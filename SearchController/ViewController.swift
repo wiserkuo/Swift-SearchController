@@ -7,14 +7,22 @@
 //
 
 import UIKit
-
+var searcher : UISearchController!
+//var place_id : String!
 class ViewController: UIViewController , UISearchBarDelegate{
     
+    @IBOutlet weak var descriptionLabel: UILabel!
+    
+    @IBOutlet weak var placeidLabel: UILabel!
+    
+    
     let googlePlaceAPI = GooglePlaceAPI()
+    let src = AutoCompleteController()
+
     @IBOutlet weak var searchBarView: UIView!
     
     var sectionData = [String]()
-    var searcher = UISearchController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         sectionData = ["aaa"]
@@ -25,13 +33,13 @@ class ViewController: UIViewController , UISearchBarDelegate{
         // Do any additional setup after loading the view, typically from a nib.
         // most rudimentary possible search interface
         // instantiate a view controller that will present the search results
-        let src = SearchResultsController(data: self.sectionData)
+        
         // instantiate a search controller and keep it alive
-        let searcher = UISearchController(searchResultsController: src)
-        self.searcher = searcher
+        searcher = UISearchController(searchResultsController: src)
+        //self.searcher = searcher
         // specify who the search controller should notify when the search bar changes
         searcher.searchResultsUpdater = src
-        
+        searcher.searchBar.delegate = self
         // put the search controller's search bar into the interface
        // let b = searcher.searchBar
         
@@ -71,7 +79,20 @@ class ViewController: UIViewController , UISearchBarDelegate{
     
         
     }
-
+    func searchBarSearchButtonClicked(searchBar: UISearchBar){
+        println("searchBarSearchButtonClicked")
+        println("typed:\(searcher.searchBar.text)")
+        descriptionLabel.text=searcher.searchBar.text
+        searcher.active = false
+        
+    }
+    func searchBarTextDidEndEditing(searchBar: UISearchBar){ // wiser:connected the action didSelectRowAtIndexPath in AutoCompleteController , set searcher.active=false as well
+        println("searchBarTextDidEndEditing")
+        println("autocomplete:\(src.originalData[src.selectedIndex.row]) , \(src.place_ids[src.selectedIndex.row])")
+        descriptionLabel.text="description:"+src.originalData[src.selectedIndex.row]
+        placeidLabel.text="place id:"+src.place_ids[src.selectedIndex.row]
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
