@@ -21,8 +21,8 @@ class GooglePlaceAPI {
     func fetchPlacesAutoComplete(input:String, completion: (([Prediction]) -> Void)) -> ()
     {
        //input = "new york"
-        let a = "new york"
-       var urlString = "https://maps.googleapis.com/maps/api/place/autocomplete/json?key=\(apiKey)&input=\(a)"
+        //let a = "new york"
+       var urlString = "https://maps.googleapis.com/maps/api/place/autocomplete/json?key=\(apiKey)&input=\(input)"
        // println("\(urlString1)")
         //let typesString = types.count > 0 ? join("|", types) : "food"
         //urlString += "&types=\(typesString)"

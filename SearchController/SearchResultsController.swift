@@ -12,7 +12,7 @@ a default table with the search results in each cell's textLabel.
 class SearchResultsController : UITableViewController {
     var originalData : [String]
     var filteredData = [String]()
-    
+    var googlePlaceAPI = GooglePlaceAPI()
     init(data:[String]) {
         // we don't use sections, so flatten the data into a single array of strings
         //self.originalData = data.reduce([String](), combine:+)
@@ -62,15 +62,25 @@ and reload the table.
 extension SearchResultsController : UISearchResultsUpdating {
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         println("here")
-        let sb = searchController.searchBar
-        let target = sb.text
-        self.filteredData = self.originalData.filter {
-            s in
-            let options = NSStringCompareOptions.CaseInsensitiveSearch
-            let found = s.rangeOfString(target, options: options)
-            return (found != nil)
+        self.originalData.removeAll()
+        googlePlaceAPI.fetchPlacesAutoComplete(searchController.searchBar.text){ predictions in
+            for prediction: Prediction in predictions {
+                //println("\(prediction.description)")
+          //      self.sectionData.append(prediction.description)
+                self.originalData.append(prediction.description)
+            }
+            //src.reloadOriginalData(self.sectionData)
+            //src.tableView.reloadData()
+            self.filteredData = self.originalData.filter {
+                s in
+                let options = NSStringCompareOptions.CaseInsensitiveSearch
+                let found = s.rangeOfString(searchController.searchBar.text, options: options)
+                return (found != nil)
+            }
+            self.tableView.reloadData()
         }
-        self.tableView.reloadData()
+        
+        
     }
 }
 

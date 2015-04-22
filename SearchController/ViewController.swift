@@ -59,6 +59,7 @@ class ViewController: UIViewController , UISearchBarDelegate{
         }
         }
 */
+        /*
         googlePlaceAPI.fetchPlacesAutoComplete("new york"){ predictions in
             for prediction: Prediction in predictions {
                 //println("\(prediction.description)")
@@ -66,7 +67,7 @@ class ViewController: UIViewController , UISearchBarDelegate{
             }
             src.reloadOriginalData(self.sectionData)
             src.tableView.reloadData()
-        }
+        }*/
     
         
     }
