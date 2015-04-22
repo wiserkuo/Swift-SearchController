@@ -42,20 +42,44 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="address:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x53-Ex-pb8" userLabel="address">
+                                <rect key="frame" x="20" y="182" width="500" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="500" id="6CY-jJ-NYK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="coordinate:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Qa-VG-OLu" userLabel="coordinate">
+                                <rect key="frame" x="20" y="223" width="500" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="500" id="ZXj-F9-7Sh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="6S9-v3-9no" secondAttribute="trailing" constant="20" id="0Pf-vn-xSU"/>
+                            <constraint firstItem="x53-Ex-pb8" firstAttribute="top" secondItem="raH-eW-dl8" secondAttribute="bottom" constant="20" id="Gce-7i-1OJ"/>
+                            <constraint firstItem="4Qa-VG-OLu" firstAttribute="top" secondItem="x53-Ex-pb8" secondAttribute="bottom" constant="20" id="Hkg-a8-H4U"/>
                             <constraint firstItem="raH-eW-dl8" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="Ohz-Bi-cpz"/>
                             <constraint firstItem="raH-eW-dl8" firstAttribute="top" secondItem="IXX-p6-CAM" secondAttribute="bottom" constant="20" id="Q0y-mH-YVV"/>
                             <constraint firstItem="IXX-p6-CAM" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="Yp3-ES-FTr"/>
                             <constraint firstItem="IXX-p6-CAM" firstAttribute="top" secondItem="6S9-v3-9no" secondAttribute="bottom" constant="20" id="aay-9G-MQ7"/>
                             <constraint firstItem="6S9-v3-9no" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="emo-Tp-Ond"/>
                             <constraint firstItem="6S9-v3-9no" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="20" id="g0n-fw-Rdy"/>
+                            <constraint firstItem="x53-Ex-pb8" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="hOh-kL-vFN"/>
+                            <constraint firstItem="4Qa-VG-OLu" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="uTN-aV-ZjZ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="dYa-cj-Dko"/>
                     <connections>
+                        <outlet property="addressLabel" destination="x53-Ex-pb8" id="kTM-62-dFf"/>
+                        <outlet property="coordinateLabel" destination="4Qa-VG-OLu" id="2Xj-9O-Ppn"/>
                         <outlet property="descriptionLabel" destination="IXX-p6-CAM" id="i1N-Hm-m7t"/>
                         <outlet property="placeidLabel" destination="raH-eW-dl8" id="pej-AD-SZ9"/>
                         <outlet property="searchBarView" destination="6S9-v3-9no" id="Kvh-9Y-qxw"/>

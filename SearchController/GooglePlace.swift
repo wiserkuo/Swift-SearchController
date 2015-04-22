@@ -57,3 +57,17 @@ class Prediction {
         place_id = dictionary["place_id"] as! String
     }
 }
+class Detail {
+    let address :String
+    let coordinate:CLLocationCoordinate2D
+    init(dictionary:NSDictionary){
+       
+        address  = dictionary["formatted_address"] as! String
+        //coordinat
+        let location = dictionary["geometry"]?["location"] as! NSDictionary
+        let lat = location["lat"] as! CLLocationDegrees
+        let lng = location["lng"] as! CLLocationDegrees
+        coordinate = CLLocationCoordinate2DMake(lat, lng)
+        println("Detail: address \(address)")
+    }
+}

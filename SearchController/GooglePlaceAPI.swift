@@ -18,6 +18,7 @@ class GooglePlaceAPI {
         return NSURLSession.sharedSession()
     }
     var predictions = [Prediction]()
+    //var detail : Detail!
 //https://maps.googleapis.com/maps/api/place/autocomplete/json?key=AIzaSyA0LhU68y48rb04f4kfvMH8xOsyCr7xz24&input=new%20york
     func fetchPlacesAutoComplete(input:String, completion: (([Prediction]) -> Void)) -> ()
     {
@@ -48,6 +49,29 @@ class GooglePlaceAPI {
             }
             dispatch_async(dispatch_get_main_queue()) {
                 completion(self.predictions)
+            }
+        }
+        placesTask.resume()
+    }
+    func fetchPlacesDetail(placeid:String, completion: ((Detail?) -> Void)) -> ()
+    {
+        var place : Detail!
+        var urlString = "https://maps.googleapis.com/maps/api/place/details/json?key=\(apiKey)&placeid=\(placeid)"
+        urlString = urlString.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+        if placesTask.taskIdentifier > 0 && placesTask.state == .Running {
+            placesTask.cancel()
+        }
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        placesTask = session.dataTaskWithURL(NSURL(string: urlString)!) {data, response, error in
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+            if let json = NSJSONSerialization.JSONObjectWithData(data, options:nil, error:nil) as? NSDictionary {
+                if let results = json["result"] as? NSDictionary {
+                    place = Detail(dictionary: results)
+                    println("\(place.address) , \(place.coordinate.latitude) , \(place.coordinate.longitude)")
+                }
+            }
+            dispatch_async(dispatch_get_main_queue()) {
+                completion(place)
             }
         }
         placesTask.resume()

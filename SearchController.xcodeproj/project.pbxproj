@@ -85,8 +85,8 @@
 			children = (
 				2DBAEA521AE690B200372075 /* AppDelegate.swift */,
 				2DBAEA541AE690B200372075 /* ViewController.swift */,
-				2DBAEA741AE73A2C00372075 /* GooglePlace.swift */,
 				2DBAEA7A1AE79D7400372075 /* Main.storyboard */,
+				2DBAEA741AE73A2C00372075 /* GooglePlace.swift */,
 				2DBAEA761AE74C2C00372075 /* GooglePlaceAPI.swift */,
 				2DBAEA591AE690B200372075 /* Images.xcassets */,
 				2DBAEA5B1AE690B200372075 /* LaunchScreen.xib */,
